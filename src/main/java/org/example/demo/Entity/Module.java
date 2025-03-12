@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Module {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,10 +14,7 @@ public class Module {
     private int heures;
 
 
-    @ManyToMany
-    @JoinTable(name="etudiants_Module",
-    joinColumns = @JoinColumn(name="etudiant_id"),
-    inverseJoinColumns = @JoinColumn(name = "module_name"))
+    @ManyToMany(mappedBy="module")
     private List<Etudiant> etudiants=new ArrayList<>();
     public int getId() {
         return id;

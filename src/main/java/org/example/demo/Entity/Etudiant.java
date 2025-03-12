@@ -17,7 +17,10 @@ public class Etudiant {
     @OneToOne(mappedBy = "student",cascade = CascadeType.ALL)
     private Adresse adresse;
 
-    @OneToMany(mappedBy= "student",cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(name="etudiants_Module",
+            joinColumns = @JoinColumn(name="etudiant_id"),
+            inverseJoinColumns = @JoinColumn(name = "module_name"))
     private List<Module> module=new ArrayList<>();
     public Etudiant() {
     }
