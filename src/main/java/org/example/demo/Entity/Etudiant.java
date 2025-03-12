@@ -17,6 +17,11 @@ public class Etudiant {
     @OneToOne(mappedBy = "student",cascade = CascadeType.ALL)
     private Adresse adresse;
 
+    @ManyToOne
+    @JoinColumn(name="ecole_id")
+    private Ecole ecole ;
+
+
     @ManyToMany
     @JoinTable(name="etudiants_Module",
             joinColumns = @JoinColumn(name="etudiant_id"),
